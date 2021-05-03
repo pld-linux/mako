@@ -1,11 +1,11 @@
 Summary:	A lightweight Wayland notification daemon
 Name:		mako
-Version:	1.4.1
+Version:	1.5
 Release:	1
 License:	MIT
 Group:		Applications
 Source0:	https://github.com/emersion/mako/releases/download/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	1da0e274b25e61d0f8ce956270f3f737
+# Source0-md5:	e4de0a380a33415996880e1119aa0f3d
 URL:		https://wayland.emersion.fr/mako/
 BuildRequires:	cairo-devel
 BuildRequires:	gdk-pixbuf2-devel
@@ -14,7 +14,7 @@ BuildRequires:	meson >= 0.50.0
 BuildRequires:	ninja
 BuildRequires:	pango-devel
 BuildRequires:	rpmbuild(macros) >= 1.736
-BuildRequires:	scdoc
+BuildRequires:	scdoc >= 1.9.7
 BuildRequires:	systemd-devel
 BuildRequires:	wayland-devel
 BuildRequires:	wayland-protocols >= 1.14
