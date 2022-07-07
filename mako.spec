@@ -13,6 +13,7 @@ BuildRequires:	glib2-devel
 BuildRequires:	meson >= 0.50.0
 BuildRequires:	ninja
 BuildRequires:	pango-devel
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	scdoc >= 1.9.7
 BuildRequires:	systemd-devel
