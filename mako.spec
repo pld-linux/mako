@@ -1,16 +1,17 @@
 Summary:	A lightweight Wayland notification daemon
 Name:		mako
-Version:	1.6
+Version:	1.7.1
 Release:	1
 License:	MIT
 Group:		Applications
 Source0:	https://github.com/emersion/mako/releases/download/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	654f3867d19f3d3fb233b66d7c91a22f
+# Source0-md5:	c1b1778b55da0902b2c2b4899dc97c4e
 URL:		https://wayland.emersion.fr/mako/
+BuildRequires:	bash-completion-devel >= 1:2.0
 BuildRequires:	cairo-devel
 BuildRequires:	gdk-pixbuf2-devel
 BuildRequires:	glib2-devel
-BuildRequires:	meson >= 0.50.0
+BuildRequires:	meson >= 0.60.0
 BuildRequires:	ninja
 BuildRequires:	pango-devel
 BuildRequires:	rpm-build >= 4.6
@@ -24,6 +25,16 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 mako is a lightweight notification daemon for Wayland compositors that
 support the layer-shell protocol.
+
+%package -n bash-completion-mako
+Summary:	bash-completion for mako
+Group:		Applications/Shells
+Requires:	%{name} = %{version}-%{release}
+Requires:	bash-completion >= 1:2.0
+BuildArch:	noarch
+
+%description -n bash-completion-mako
+This package provides bash-completion for mako.
 
 %package -n zsh-completion-mako
 Summary:	ZSH completion for mako
@@ -40,6 +51,7 @@ ZSH completion for mako.
 
 %build
 %meson build \
+	-Dbash-completions=true \
 	-Dzsh-completions=true
 %ninja_build -C build
 
@@ -59,6 +71,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/mako.1*
 %{_mandir}/man1/makoctl.1*
 %{_mandir}/man5/mako.5*
+
+%files -n bash-completion-mako
+%defattr(644,root,root,755)
+%{bash_compdir}/mako
+%{bash_compdir}/makoctl
 
 %files -n zsh-completion-mako
 %defattr(644,root,root,755)
