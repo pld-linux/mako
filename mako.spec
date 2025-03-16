@@ -16,7 +16,7 @@ BuildRequires:	ninja
 BuildRequires:	pango-devel
 BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	scdoc >= 1.9.7
 BuildRequires:	systemd-devel
 BuildRequires:	wayland-devel
@@ -51,14 +51,14 @@ ZSH completion for mako.
 %setup -q
 
 %build
-%meson build \
+%meson \
 	-Dbash-completions=true \
 	-Dzsh-completions=true
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%ninja_install -C build
+%meson_install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
